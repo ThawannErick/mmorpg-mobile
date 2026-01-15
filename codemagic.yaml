@@ -1,0 +1,39 @@
+workflows:
+  android-release:
+    name: Android Release Build
+    instance_type: linux_default
+    max_build_duration: 120
+    environment:
+      java:
+        version: 11
+      ndk: r21e
+      android_sdk:
+        api_level: 33
+        build_tools_version: 33.0.0
+      vars:
+        PACKAGE_NAME: "com.mmorpg.mobile"
+        APP_NAME: "MMORPG Mobile"
+    triggering:
+      events:
+        - push
+      branch:
+        include_patterns:
+          - main
+          - master
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          echo "ndk.dir=$ANDROID_NDK_ROOT" >> local.properties
+      - name: Build APK
+        script: |
+          ./gradlew assembleRelease --stacktrace
+    artifacts:
+      - build/app/outputs/apk/release/*.apk
+    publishing:
+      email:
+        recipients:
+          - thawannerickc.marques@gmail.com
+        notify:
+          success: true
+          failure: true
