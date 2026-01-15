@@ -1,0 +1,16 @@
+{
+  "projectName": "MMORPG Mobile",
+  "unityVersion": "2022.3.0f1",
+  "targetPlatform": "Android",
+  "minimumAPILevel": 26,
+  "targetAPILevel": 33,
+  "screenOrientation": "Portrait",
+  "defaultScreenWidth": 1080,
+  "defaultScreenHeight": 1920,
+  "targetFrameRate": 60,
+  "vSyncCount": 1,
+  "qualityLevel": "High",
+  "antiAliasing": "4x",
+  "anisotropicFiltering": "Enable",
+  "textureCompression": "Default"
+}
